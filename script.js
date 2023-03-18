@@ -31,6 +31,8 @@ document.querySelector('.check').addEventListener('click', function () {
   else if (guess === number) {
     displayMessage('👏 You are a guessing wizard 🙌');
 
+    let win = document.getElementById('winningAudio');
+    win.play();
     document.querySelector('.number').textContent = number;
     document.querySelector('body').style.backgroundColor = '#60b347';
 
@@ -56,8 +58,11 @@ document.querySelector('.check').addEventListener('click', function () {
 //restart game
 
 document.querySelector('.again').addEventListener('click', function () {
-  alert('Press Ok to start');
-  
+
+  let win = document.getElementById('winningAudio');
+    win.pause();
+    win.currentTime = 0;
+
   score = 20;
   document.querySelector('.score').textContent = score;
 

@@ -10,8 +10,6 @@ document.querySelector('.number').value = number;
 let score = 20;
 let highscore = 0;
 
-
-
 const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
@@ -31,15 +29,18 @@ document.querySelector('.check').addEventListener('click', function () {
   else if (guess === number) {
     displayMessage('👏 You are a guessing wizard 🙌');
 
+    //set the audio id to win and then plays the audio once the user has guessed correctly
+
     let win = document.getElementById('winningAudio');
     win.play();
+
     document.querySelector('.number').textContent = number;
     document.querySelector('body').style.backgroundColor = '#60b347';
 
     if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
-    } 
+    }
   }
 
   //If player guesses wrong
@@ -58,10 +59,11 @@ document.querySelector('.check').addEventListener('click', function () {
 //restart game
 
 document.querySelector('.again').addEventListener('click', function () {
+  // Stop the audio track and set the audio track back to the beginning
 
   let win = document.getElementById('winningAudio');
-    win.pause();
-    win.currentTime = 0;
+  win.pause();
+  win.currentTime = 0;
 
   score = 20;
   document.querySelector('.score').textContent = score;
@@ -73,5 +75,4 @@ document.querySelector('.again').addEventListener('click', function () {
 
   number = Math.trunc(Math.random() * 20) + 1;
   document.querySelector('.number').textContent = '?';
-
 });
